@@ -85,5 +85,7 @@ class AjaxSelect2Widget(Select2TextInput):
 
         ctx = super(AjaxSelect2Widget, self).get_context(name, value, attrs)
         ctx['select2_options'] = unicode(json.dumps(options))
-        ctx['text'] = unicode(self.field.to_python(value))
+
+        instance = self.field.to_python(value) if value else None
+        ctx['text'] = self.field.label_from_instance(instance) if instance else ''
         return ctx
