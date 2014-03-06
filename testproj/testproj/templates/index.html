@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="{% static 'select2-3.4.5/select2.css' %}" rel="stylesheet">
+    <link href="{% static 'css/select2-bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'select2-3.4.5/select2.js' %}"></script>
+    <script src="{% static 'select2-3.4.5/select2_locale_fr.js' %}"></script>
+    <script src="{% static 'select2rocks/select2rocks.js' %}"></script>
+    <script src="{% static 'js/select2rocks-backends.js' %}"></script>
+  </head>
+  <body>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <form method="post" action="{% url 'index' %}">{% csrf_token %}
+      {{ form.as_p }}
+      <p><input type="submit" value="Submit"></p>
+    </form>
+  </body>
+</html>

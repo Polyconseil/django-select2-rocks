@@ -1,0 +1,165 @@
+[
+{
+  "pk": 0,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Les Jaunais"
+  }
+},
+{
+  "pk": 1,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Pointe de Chemoulin"
+  }
+},
+{
+  "pk": 2,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de la Petite Vall\u00e9e"
+  }
+},
+{
+  "pk": 3,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de G\u00e9orama"
+  }
+},
+{
+  "pk": 4,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de Grand Traict"
+  }
+},
+{
+  "pk": 5,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de M. Hulot"
+  }
+},
+{
+  "pk": 6,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "La Courance"
+  }
+},
+{
+  "pk": 7,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de l'\u00c8ve"
+  }
+},
+{
+  "pk": 8,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Virechat"
+  }
+},
+{
+  "pk": 9,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Tr\u00e9b\u00e9zy"
+  }
+},
+{
+  "pk": 10,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Porc\u00e9"
+  }
+},
+{
+  "pk": 11,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Bonne Anse"
+  }
+},
+{
+  "pk": 12,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage du Rocher du Lion"
+  }
+},
+{
+  "pk": 13,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Belle Fontaine"
+  }
+},
+{
+  "pk": 14,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de Kerloupiots"
+  }
+},
+{
+  "pk": 15,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de Kerl\u00e9d\u00e9"
+  }
+},
+{
+  "pk": 16,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Ker Vill\u00e8s"
+  }
+},
+{
+  "pk": 17,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de Vill\u00e8s Martin"
+  }
+},
+{
+  "pk": 18,
+  "model": "testapp.beach",
+  "fields": {
+    "name": "Plage de Saint-Nazaire"
+  }
+},
+{
+  "pk": 1,
+  "model": "testapp.selectedbeach",
+  "fields": {
+    "json_beach": 6,
+    "tastypie_beach_contains": 1,
+    "rest_framework_beach": 3,
+    "tastypie_beach_starts": 2
+  }
+},
+{
+  "pk": 2,
+  "model": "testapp.selectedbeach",
+  "fields": {
+    "json_beach": 2,
+    "tastypie_beach_contains": 1,
+    "rest_framework_beach": 3,
+    "tastypie_beach_starts": 2
+  }
+},
+{
+  "pk": 3,
+  "model": "testapp.selectedbeach",
+  "fields": {
+    "json_beach": 13,
+    "tastypie_beach_contains": 11,
+    "rest_framework_beach": 6,
+    "tastypie_beach_starts": 16
+  }
+}
+]

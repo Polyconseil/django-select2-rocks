@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+recursive-include select2rocks/static *
+recursive-include select2rocks/templates *
