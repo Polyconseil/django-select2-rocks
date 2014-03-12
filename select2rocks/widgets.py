@@ -84,8 +84,12 @@ class AjaxSelect2Widget(Select2TextInput):
         options.update({'url': self.url})
 
         ctx = super(AjaxSelect2Widget, self).get_context(name, value, attrs)
-        ctx['select2_options'] = unicode(json.dumps(options))
 
+        if 'placeholder' in options:
+            # Resolve lazy ugettext
+            options['placeholder'] = unicode(options['placeholder'])
+
+        ctx['select2_options'] = json.dumps(options)
         instance = self.field.to_python(value) if value else None
         ctx['text'] = self.field.label_from_instance(instance) if instance else ''
         return ctx
