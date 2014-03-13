@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 import json
 
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+
 from rest_framework import viewsets, serializers, filters
 
-from .models import Beach, SelectedBeach
-
-from . import forms
+from testproj.testapp.models import Beach, SelectedBeach
+from testproj.testapp import forms
 
 
 def index(request):
@@ -16,7 +18,8 @@ def index(request):
         form = forms.SelectedBeachForm(data=request.POST)
         if form.is_valid():
             selected_beach = form.save()
-            messages.success(request, u"JSON Beach '%s' has been selected." % selected_beach.json_beach)
+            messages.success(request,
+                             "JSON Beach '%s' has been selected." % selected_beach.json_beach)
             return redirect('index')
     else:
         selected_beach = SelectedBeach.objects.get(pk=1)

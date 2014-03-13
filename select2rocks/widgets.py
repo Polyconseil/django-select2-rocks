@@ -3,8 +3,9 @@ import json
 from django import forms
 from django.core.urlresolvers import reverse
 from django.template import loader
+from django.utils.encoding import force_text
 
-from settings import SELECT2_OPTIONS, SELECT2_ATTRS
+from select2rocks.settings import SELECT2_OPTIONS, SELECT2_ATTRS
 
 
 class Select2TextInput(forms.TextInput):
@@ -84,10 +85,9 @@ class AjaxSelect2Widget(Select2TextInput):
         options.update({'url': self.url})
 
         ctx = super(AjaxSelect2Widget, self).get_context(name, value, attrs)
-
         if 'placeholder' in options:
             # Resolve lazy ugettext
-            options['placeholder'] = unicode(options['placeholder'])
+            options['placeholder'] = force_text(options['placeholder'])
 
         ctx['select2_options'] = json.dumps(options)
         instance = self.field.to_python(value) if value else None

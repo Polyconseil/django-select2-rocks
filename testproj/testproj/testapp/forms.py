@@ -1,4 +1,7 @@
+from __future__ import unicode_literals
+
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 import select2rocks
 
@@ -16,7 +19,7 @@ class SelectedBeachForm(forms.ModelForm):
         widget=select2rocks.AjaxSelect2Widget(
             url_name='json_beaches',
             select2_options={
-                'placeholder': u"Select a beach",
+                'placeholder': _("Select a beach"),
                 'ajax': {
                     'quietMillis': 50
                 }
@@ -46,4 +49,5 @@ class SelectedBeachForm(forms.ModelForm):
         required=False,
         widget=select2rocks.AjaxSelect2Widget(
             url_name='beach-list',
-            select2_options={'placeholder': u"Select a beach", 'backend': 'restframework'}))
+            select2_options={'placeholder': _("Select a beach"),
+                             'backend': 'restframework'}))

@@ -5,7 +5,7 @@ from tastypie import api as tastypie_api
 from testproj.testapp.api import BeachResource
 
 from rest_framework import routers
-from testapp.views import BeachViewSet
+from testproj.testapp.views import BeachViewSet
 
 admin.autodiscover()
 
