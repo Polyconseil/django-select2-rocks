@@ -1,6 +1,7 @@
 import json
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.template import loader
 from django.utils.encoding import force_text
@@ -90,6 +91,9 @@ class AjaxSelect2Widget(Select2TextInput):
             options['placeholder'] = force_text(options['placeholder'])
 
         ctx['select2_options'] = json.dumps(options)
-        instance = self.field.to_python(value) if value else None
+        try:
+            instance = self.field.to_python(value) if value else None
+        except ValidationError:
+            instance = None
         ctx['text'] = self.field.label_from_instance(instance) if instance else ''
         return ctx
