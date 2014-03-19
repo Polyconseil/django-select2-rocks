@@ -1,7 +1,7 @@
 ;(function ($, window, document, undefined) {
-  var pluginName = "djangoSelect2";
+  var pluginName = "Select2Rocks";
 
-  $.fn.djangoSelect2Backends = {
+  $.fn.Select2RocksBackends = {
     'default': {
       ajax: {
         dataType: 'json',
@@ -37,7 +37,7 @@
     } else {
       backend = 'default';
     }
-    this.settings = $.extend(true, {}, $.fn.djangoSelect2Backends[backend], options);
+    this.settings = $.extend(true, {}, $.fn.Select2RocksBackends[backend], options);
     this.settings['ajax']['url'] = this.settings.url;
     if ('queryKey' in this.settings) {
       var queryKey = this.settings.queryKey;

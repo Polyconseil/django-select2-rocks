@@ -1,2 +1,2 @@
 <input type="{{ type }}" name="{{ name }}"{% if value %} value="{{ value }}"{% endif %} {% if required %} required{% endif %}{% for name, value in attrs.items %} {{ name }}{% if value != True %}="{{ value }}"{% endif %}{% endfor %}>
-<script>$(function() { $("#{{ attrs.id }}").data("text", "{{ text }}").djangoSelect2({{ select2_options|safe }}); });</script>
+<script>$(function() { $("#{{ attrs.id }}").data("text", "{{ text }}").Select2Rocks({{ select2_options|safe }}); });</script>

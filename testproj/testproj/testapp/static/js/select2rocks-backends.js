@@ -5,7 +5,7 @@
 (function ($) {
     "use strict";
 
-    $.extend(true, $.fn.djangoSelect2Backends, {
+    $.extend(true, $.fn.Select2RocksBackends, {
       tastypie: {
         ajax: {
           dataType: 'json',
