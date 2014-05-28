@@ -7,7 +7,7 @@ Light integration glue between `Django <https://www.djangoproject.com/>`_ and
 This project is inspired by `Django-Select2 <http://django-select2.readthedocs.org/>`_ and
 `django-select2light <https://github.com/ouhouhsami/django-select2light/>`_.
 
-Django-select2-rocks is distributed under the 3-clause BSD license.
+Django-select2-rocks is distributed under the BSD 2-clause license.
 
 
 Installation
