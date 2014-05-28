@@ -15,14 +15,14 @@ Installation
 
 1. pip install django_select2_rocks
 
-2. add `django_select2_rocks` to your `INSTALL_APPS`
+2. add ``django_select2_rocks`` to your ``INSTALL_APPS``
 
-3. `python manage.py collectstatic` will install Django Select2 Rocks JS.
+3. ``python manage.py collectstatic`` will install Django Select2 Rocks JS.
 
 4. Include jQuery (1.7+), Select2 JS/CSS (not provided, tested with v3.4.5) and
    select2rocks/select2rocks.js in your templates.
 
-5. Now, you can use Select2ModelChoiceField field in your forms.
+5. Now, you can use ``Select2ModelChoiceField`` fields in your forms.
 
 
 Design
@@ -51,12 +51,12 @@ Django REST framework view.
 
 .. code-block:: python
 
-import select2rocks
+   import select2rocks
 
-class BeachForm(forms.Form):
-    beach = select2rocks.Select2ModelChoiceField(
-        queryset=Beach.objects.all()
-        widget=select2rocks.AjaxSelect2Widget(url_name='json_beaches'))
+   class BeachForm(forms.Form):
+       beach = select2rocks.Select2ModelChoiceField(
+           queryset=Beach.objects.all()
+           widget=select2rocks.AjaxSelect2Widget(url_name='json_beaches'))
 
 
 Get the Code
@@ -70,10 +70,10 @@ You can either clone the public repository:
 
 .. code-block:: bash
 
-    $ git clone git://github.com/polyconseil/django-select2-rocks.git
+   $ git clone git://github.com/polyconseil/django-select2-rocks.git
 
 Once you have a copy of the source, you can install it with:
 
 .. code-block:: bash
 
-     $ python setup.py install
+   $ python setup.py install
