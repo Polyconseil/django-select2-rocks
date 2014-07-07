@@ -55,7 +55,7 @@ Django REST framework view.
 
    class BeachForm(forms.Form):
        beach = select2rocks.Select2ModelChoiceField(
-           queryset=Beach.objects.all()
+           queryset=Beach.objects.all(),
            widget=select2rocks.AjaxSelect2Widget(url_name='json_beaches'))
 
 
