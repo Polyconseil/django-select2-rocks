@@ -15,7 +15,7 @@ Installation
 
 1. pip install django_select2_rocks
 
-2. add ``django_select2_rocks`` to your ``INSTALL_APPS``
+2. add ``select2rocks`` to your ``INSTALL_APPS``
 
 3. ``python manage.py collectstatic`` will install Django Select2 Rocks JS.
 
