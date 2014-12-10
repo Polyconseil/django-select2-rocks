@@ -50,23 +50,20 @@ class Select2TextInput(forms.TextInput):
 class AjaxSelect2Widget(Select2TextInput):
     template_name = 'select2rocks/ajax_select2.html'
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, url=None, url_name=None, url_kwargs=None, select2_options=None, *args, **kwargs):
         self.url = None
         self.url_name = None
         self.url_kwargs = None
 
         # The URL can be given or reversed in get_context()
-        try:
-            self.url = kwargs.pop('url')
-        except KeyError:
-            self.url_name = kwargs.pop('url_name')
-            if 'url_kwargs' in kwargs:
-                self.url_kwargs = kwargs.pop('url_kwargs')
-
-        if 'select2_options' in kwargs:
-            self.select2_options = kwargs.pop('select2_options')
+        if url is not None:
+            self.url = url
         else:
-            self.select2_options = {}
+            self.url_name = url_name
+            if url_kwargs is not None:
+                self.url_kwargs = url_kwargs
+
+        self.select2_options = select2_options if select2_options is not None else {}
 
         super(AjaxSelect2Widget, self).__init__(*args, **kwargs)
 
