@@ -19,13 +19,8 @@ class Select2TextInput(forms.TextInput):
             'hidden': self.is_hidden,
             'required': self.is_required,
         }
-        if self.is_hidden:
-            context['hidden'] = True
 
-        if value is None:
-            value = ''
-
-        if value != '':
+        if value is not None:
             # Only add the value if it is non-empty
             context['value'] = self._format_value(value)
 
@@ -70,10 +65,7 @@ class AjaxSelect2Widget(Select2TextInput):
     def get_context(self, name, value, attrs=None):
         if not self.url:
             # Try to reverse it
-            if self.url_kwargs:
-                self.url = reverse(self.url_name, kwargs=self.url_kwargs)
-            else:
-                self.url = reverse(self.url_name)
+            self.url = reverse(self.url_name, kwargs=self.url_kwargs)
 
         attrs.update(SELECT2_ATTRS)
 

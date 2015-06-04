@@ -6,15 +6,24 @@
       ajax: {
         dataType: 'json',
         data: function (term, page) {
-	  return {q: term};
+          return {q: term};
         },
         results: function (data, page) {
-	  return {results: data};
+          return {results: data};
         }
       },
       initSelection: function(element, callback) {
-        var elt = $(element);
-        var data = {id: elt.val(), text: elt.data('text')};
+        var data = [];
+
+        $(element).data('text').split(',').forEach(function(item) {
+          item = item.split(':');
+          data.push({id: item[0], text: item[1]});
+        });
+        // Remove the list if there's only one element (won't change anything
+        // in case of multiple select, but will break single select)
+        if (data.length == 1) {
+          data = data[0];
+        }
         callback(data);
       },
       formatResult: function(item) {
