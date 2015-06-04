@@ -3,3 +3,4 @@
 testproj/db.sqlite3
 build
 dist
+*.swp

@@ -51,3 +51,12 @@ class SelectedBeachForm(forms.ModelForm):
             url_name='beach-list',
             select2_options={'placeholder': _("Select a beach"),
                              'backend': 'restframework'}))
+
+    # Multi select REST framework
+    rest_framework_beach_multi = select2rocks.Select2ModelMultipleChoiceField(
+        queryset=Beach.objects.all(),
+        required=False,
+        widget=select2rocks.AjaxSelect2Widget(
+            url_name='beach-list',
+            select2_options={'placeholder': _("Select beaches"),
+                             'backend': 'restframework'}))
