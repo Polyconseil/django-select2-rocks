@@ -34,10 +34,12 @@ class Select2ModelMultipleChoiceField(Select2FieldMixin, forms.ModelMultipleChoi
                  required=True, widget=None, label=None, initial=None,
                  help_text='', to_field_name=None, label_from_instance=None,
                  *args, **kwargs):
-        widget.select2_options.update({'multiple': True})
         super(Select2ModelMultipleChoiceField, self).__init__(
             queryset, cache_choices, required, widget,
             label, initial, help_text, *args, **kwargs)
+        if not self.widget.select2_options:
+            self.widget.select2_options = {}
+        self.widget.select2_options.update({'multiple': True})
         self._label_from_instance = label_from_instance
         self.widget.field = self
 
