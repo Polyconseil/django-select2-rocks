@@ -9,7 +9,7 @@ def label_from_instance_with_pk(obj, val):
     This is needed because we cannot rely on the order elements will appear
     in select2. By doing a binding like this, we are sure to associate a pk
     with the correct label (labels are shown, pks are submitted)."""
-    return "{pk}:{val}".format(pk=obj.pk, val=val)
+    return u"{pk}:{val}".format(pk=obj.pk, val=val)
 
 
 class Select2ModelChoiceField(forms.ModelChoiceField):
