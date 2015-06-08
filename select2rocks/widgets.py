@@ -81,6 +81,9 @@ class AjaxSelect2Widget(Select2TextInput):
 
         ctx['select2_options'] = json.dumps(options)
         try:
+            # Django's to_python returns instances sorted by their pks (ASC) in
+            # case of a multiple selection, we cannot rely on the order of pks
+            # in `value` anymore
             instance = self.field.to_python(value) if value else None
         except ValidationError:
             instance = None

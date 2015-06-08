@@ -10,11 +10,11 @@
         ajax: {
           dataType: 'json',
           data: function (term, page) {
-	    return {name__icontains: term};
-	  },
-	  results: function (data, page) {
-	    return {results: data.objects};
-	  }
+            return {name__icontains: term};
+          },
+          results: function (data, page) {
+            return {results: data.objects};
+          }
         },
         initSelection: function(element, callback) {
           var elt = $(element);
@@ -22,22 +22,22 @@
           callback(data);
         },
         formatResult: function(item) {
-	  return item.name;
-	},
-	formatSelection: function(item) {
-	  return item.name;
-	}
+          return item.name;
+        },
+        formatSelection: function(item) {
+          return item.name;
+        }
       },
       restframework: {
         ajax: {
           dataType: 'json',
           data: function (term, page) {
-	    return {name__icontains: term};
-	  },
-	  results: function (data, page) {
+            return {name__icontains: term};
+          },
+          results: function (data, page) {
             // No .objects as in tastypie backend
-	    return {results: data};
-	  }
+            return {results: data};
+          }
         },
         initSelection: function(element, callback) {
           var elt = $(element);
@@ -45,11 +45,11 @@
           callback(data);
         },
         formatResult: function(item) {
-	  return item.name;
-	},
-	formatSelection: function(item) {
-	  return item.name;
-	}
+          return item.name;
+        },
+        formatSelection: function(item) {
+          return item.name;
+        }
       }
     });
 })(jQuery);

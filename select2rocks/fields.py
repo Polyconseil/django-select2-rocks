@@ -4,21 +4,21 @@ from select2rocks.widgets import AjaxSelect2Widget
 
 
 def label_from_instance_with_pk(obj, val):
-    """Add pk to label to associate label to input in multiple fields"""
+    """Associates a label with the pk of the object that generated it.
+
+    This is needed because we cannot rely on the order elements will appear
+    in select2. By doing a binding like this, we are sure to associate a pk
+    with the correct label (labels are shown, pks are submitted)."""
     return "{pk}:{val}".format(pk=obj.pk, val=val)
 
 
 class Select2ModelChoiceField(forms.ModelChoiceField):
     widget = AjaxSelect2Widget
 
-    def __init__(self, queryset, empty_label="---------", cache_choices=False,
-                 required=True, widget=None, label=None, initial=None,
-                 help_text='', to_field_name=None, label_from_instance=None,
-                 *args, **kwargs):
-        super(Select2ModelChoiceField, self).__init__(
-            queryset, empty_label, cache_choices,
-            required, widget, label, initial,
-            help_text, to_field_name, *args, **kwargs)
+    def __init__(self, queryset, widget, label_from_instance=None, *args, **kwargs):
+        kwargs['queryset'] = queryset
+        kwargs['widget'] = widget
+        super(Select2ModelChoiceField, self).__init__(*args, **kwargs)
         self._label_from_instance = label_from_instance or super(Select2ModelChoiceField, self).label_from_instance
         self.widget.field = self
 
@@ -30,13 +30,10 @@ class Select2ModelChoiceField(forms.ModelChoiceField):
 class Select2ModelMultipleChoiceField(forms.ModelMultipleChoiceField):
     widget = AjaxSelect2Widget
 
-    def __init__(self, queryset, empty_label="---------", cache_choices=False,
-                 required=True, widget=None, label=None, initial=None,
-                 help_text='', to_field_name=None, label_from_instance=None,
-                 *args, **kwargs):
-        super(Select2ModelMultipleChoiceField, self).__init__(
-            queryset, cache_choices, required, widget,
-            label, initial, help_text, *args, **kwargs)
+    def __init__(self, queryset, widget, label_from_instance=None, *args, **kwargs):
+        kwargs['queryset'] = queryset
+        kwargs['widget'] = widget
+        super(Select2ModelMultipleChoiceField, self).__init__(*args, **kwargs)
         if not self.widget.select2_options:
             self.widget.select2_options = {}
         self.widget.select2_options.update({'multiple': True})
