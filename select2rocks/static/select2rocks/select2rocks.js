@@ -1,3 +1,4 @@
+/* global jQuery */
 ;(function ($, window, document, undefined) {
   var pluginName = "Select2Rocks";
 
@@ -41,16 +42,17 @@
     var backend;
 
     if ('backend' in options) {
-      backend = options['backend'];
-      delete options['backend'];
+      // Extract 'backend' from options
+      backend = options.backend;
+      delete options.backend;
     } else {
       backend = 'default';
     }
     this.settings = $.extend(true, {}, $.fn.Select2RocksBackends[backend], options);
-    this.settings['ajax']['url'] = this.settings.url;
+    this.settings.ajax.url = this.settings.url;
     if ('queryKey' in this.settings) {
       var queryKey = this.settings.queryKey;
-      this.settings['ajax']['data'] = function(term, page) {
+      this.settings.ajax.data = function(term, page) {
         // Dynamic query key (eg. 'id__startswith')
         var query = {};
         query[queryKey] = term;
