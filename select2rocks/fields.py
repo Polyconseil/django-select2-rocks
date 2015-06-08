@@ -3,7 +3,7 @@ from django import forms
 from select2rocks.widgets import AjaxSelect2Widget
 
 
-def label_from_instance_with_pk(self, obj, val):
+def label_from_instance_with_pk(obj, val):
     """Add pk to label to associate label to input in multiple fields"""
     return "{pk}:{val}".format(pk=obj.pk, val=val)
 
