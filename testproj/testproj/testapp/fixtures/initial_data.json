@@ -17,14 +17,14 @@
   "pk": 2,
   "model": "testapp.beach",
   "fields": {
-    "name": "Plage de la Petite Vall\u00e9e"
+    "name": "Plage de la Petite Vallée"
   }
 },
 {
   "pk": 3,
   "model": "testapp.beach",
   "fields": {
-    "name": "Plage de G\u00e9orama"
+    "name": "Plage de Géorama"
   }
 },
 {
@@ -52,7 +52,7 @@
   "pk": 7,
   "model": "testapp.beach",
   "fields": {
-    "name": "Plage de l'\u00c8ve"
+    "name": "Plage de l'Ève"
   }
 },
 {
@@ -66,14 +66,14 @@
   "pk": 9,
   "model": "testapp.beach",
   "fields": {
-    "name": "Tr\u00e9b\u00e9zy"
+    "name": "Trébézy"
   }
 },
 {
   "pk": 10,
   "model": "testapp.beach",
   "fields": {
-    "name": "Porc\u00e9"
+    "name": "Porcé"
   }
 },
 {
@@ -108,21 +108,21 @@
   "pk": 15,
   "model": "testapp.beach",
   "fields": {
-    "name": "Plage de Kerl\u00e9d\u00e9"
+    "name": "Plage de Kerlédé"
   }
 },
 {
   "pk": 16,
   "model": "testapp.beach",
   "fields": {
-    "name": "Ker Vill\u00e8s"
+    "name": "Ker Villès"
   }
 },
 {
   "pk": 17,
   "model": "testapp.beach",
   "fields": {
-    "name": "Plage de Vill\u00e8s Martin"
+    "name": "Plage de Villès Martin"
   }
 },
 {
