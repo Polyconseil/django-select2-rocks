@@ -141,25 +141,5 @@
     "rest_framework_beach": 3,
     "tastypie_beach_starts": 2
   }
-},
-{
-  "pk": 2,
-  "model": "testapp.selectedbeach",
-  "fields": {
-    "json_beach": 2,
-    "tastypie_beach_contains": 1,
-    "rest_framework_beach": 3,
-    "tastypie_beach_starts": 2
-  }
-},
-{
-  "pk": 3,
-  "model": "testapp.selectedbeach",
-  "fields": {
-    "json_beach": 13,
-    "tastypie_beach_contains": 11,
-    "rest_framework_beach": 6,
-    "tastypie_beach_starts": 16
-  }
 }
 ]
