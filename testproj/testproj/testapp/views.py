@@ -18,8 +18,9 @@ def index(request):
         form = forms.SelectedBeachForm(data=request.POST)
         if form.is_valid():
             selected_beach = form.save()
-            messages.success(request,
-                             "JSON Beach '%s' has been selected." % selected_beach.json_beach)
+            messages.success(
+                request,
+                u"JSON Beach '%s' has been selected." % selected_beach.json_beach)
             return redirect('index')
     else:
         selected_beach = SelectedBeach.objects.get(pk=1)

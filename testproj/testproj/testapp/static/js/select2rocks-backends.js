@@ -10,46 +10,52 @@
         ajax: {
           dataType: 'json',
           data: function (term, page) {
-	    return {name__icontains: term};
-	  },
-	  results: function (data, page) {
-	    return {results: data.objects};
-	  }
-        },
-        initSelection: function(element, callback) {
-          var elt = $(element);
-          var data = {id: elt.val(), name: elt.data('text')};
-          callback(data);
+            return {name__icontains: term};
+          },
+          results: function (data, page) {
+            return {results: data.objects};
+          }
         },
         formatResult: function(item) {
-	  return item.name;
-	},
-	formatSelection: function(item) {
-	  return item.name;
-	}
+          return item.name;
+        },
+        formatSelection: function(item) {
+          var key = '';
+
+          // Handle restored form
+          if (item.restored) {
+            key = 'text';
+          } else {
+            key = 'name';
+          }
+          return item[key];
+        }
       },
       restframework: {
         ajax: {
           dataType: 'json',
           data: function (term, page) {
-	    return {name__icontains: term};
-	  },
-	  results: function (data, page) {
+            return {name__icontains: term};
+          },
+          results: function (data, page) {
             // No .objects as in tastypie backend
-	    return {results: data};
-	  }
-        },
-        initSelection: function(element, callback) {
-          var elt = $(element);
-          var data = {id: elt.val(), name: elt.data('text')};
-          callback(data);
+            return {results: data};
+          }
         },
         formatResult: function(item) {
-	  return item.name;
-	},
-	formatSelection: function(item) {
-	  return item.name;
-	}
+          return item.name;
+        },
+        formatSelection: function(item) {
+          var key = '';
+
+          // Handle restored form
+          if (item.restored) {
+            key = 'text';
+          } else {
+            key = 'name';
+          }
+          return item[key];
+        }
       }
     });
 })(jQuery);

@@ -1,3 +1,4 @@
+/* global jQuery */
 ;(function ($, window, document, undefined) {
   var pluginName = "Select2Rocks";
 
@@ -6,15 +7,26 @@
       ajax: {
         dataType: 'json',
         data: function (term, page) {
-	  return {q: term};
+          return {q: term};
         },
         results: function (data, page) {
-	  return {results: data};
+          return {results: data};
         }
       },
       initSelection: function(element, callback) {
-        var elt = $(element);
-        var data = {id: elt.val(), text: elt.data('text')};
+        var data = [];
+
+        $(element).data('text').split(',').forEach(function(item) {
+          item = item.split(':');
+          // The restored field can help distinguish entries returned by a GET
+          // request from entries reloaded from a form error
+          data.push({id: item[0], text: item[1], restored: true});
+        });
+        // Remove the list if there's only one element (won't change anything
+        // in case of multiple select, but will break single select)
+        if (data.length == 1) {
+          data = data[0];
+        }
         callback(data);
       },
       formatResult: function(item) {
@@ -28,20 +40,18 @@
 
   function Plugin(element, options) {
     this.element = element;
-    // User can select a backend by its name
-    var backend;
+    this.settings = $.extend(true, {}, $.fn.Select2RocksBackends['default']);
 
+    // User can select a backend by its name
     if ('backend' in options) {
-      backend = options['backend'];
-      delete options['backend'];
-    } else {
-      backend = 'default';
+      $.extend(true, this.settings, $.fn.Select2RocksBackends[options.backend]);
+      delete options.backend;
     }
-    this.settings = $.extend(true, {}, $.fn.Select2RocksBackends[backend], options);
-    this.settings['ajax']['url'] = this.settings.url;
+    $.extend(true, this.settings, options);
+    this.settings.ajax.url = this.settings.url;
     if ('queryKey' in this.settings) {
       var queryKey = this.settings.queryKey;
-      this.settings['ajax']['data'] = function(term, page) {
+      this.settings.ajax.data = function(term, page) {
         // Dynamic query key (eg. 'id__startswith')
         var query = {};
         query[queryKey] = term;
@@ -61,7 +71,7 @@
   $.fn[pluginName] = function (options) {
     return this.each(function() {
       if (!$.data(this, "plugin_" + pluginName)) {
-	$.data(this, "plugin_" + pluginName, new Plugin(this, options));
+        $.data(this, "plugin_" + pluginName, new Plugin(this, options));
       }
     });
   };
