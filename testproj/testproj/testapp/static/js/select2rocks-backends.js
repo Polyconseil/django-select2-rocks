@@ -16,16 +16,16 @@
             return {results: data.objects};
           }
         },
-        initSelection: function(element, callback) {
-          var elt = $(element);
-          var data = {id: elt.val(), name: elt.data('text')};
-          callback(data);
-        },
         formatResult: function(item) {
           return item.name;
         },
         formatSelection: function(item) {
-          return item.name;
+          // Handle restored form
+          if (item.restored) {
+            return item.text;
+          } else {
+            return item.name;
+          }
         }
       },
       restframework: {
@@ -39,16 +39,16 @@
             return {results: data};
           }
         },
-        initSelection: function(element, callback) {
-          var elt = $(element);
-          var data = {id: elt.val(), name: elt.data('text')};
-          callback(data);
-        },
         formatResult: function(item) {
           return item.name;
         },
         formatSelection: function(item) {
-          return item.name;
+          // Handle restored form
+          if (item.restored) {
+            return item.text;
+          } else {
+            return item.name;
+          }
         }
       }
     });

@@ -18,7 +18,9 @@
 
         $(element).data('text').split(',').forEach(function(item) {
           item = item.split(':');
-          data.push({id: item[0], text: item[1]});
+          // The restored field can help distinguish entries returned by a GET
+          // request from entries reloaded from a form error
+          data.push({id: item[0], text: item[1], restored: true});
         });
         // Remove the list if there's only one element (won't change anything
         // in case of multiple select, but will break single select)

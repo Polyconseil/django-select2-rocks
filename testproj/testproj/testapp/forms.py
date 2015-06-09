@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 import select2rocks
 
 from testproj.testapp.models import Beach, SelectedBeach
+from testproj.testapp.fields import MultipleBeachesChoiceField
 
 
 class SelectedBeachForm(forms.ModelForm):
@@ -53,10 +54,14 @@ class SelectedBeachForm(forms.ModelForm):
                              'backend': 'restframework'}))
 
     # Multi select REST framework
-    rest_framework_beach_multi = select2rocks.Select2ModelMultipleChoiceField(
+    rest_framework_beach_multi = MultipleBeachesChoiceField(
         queryset=Beach.objects.all(),
         required=False,
         widget=select2rocks.AjaxSelect2Widget(
             url_name='beach-list',
             select2_options={'placeholder': _("Select beaches"),
                              'backend': 'restframework'}))
+
+    required_boolean = forms.BooleanField(
+        required=True,
+        help_text="Leave blank to raise a form error and test form restoration")
