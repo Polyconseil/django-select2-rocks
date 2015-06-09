@@ -40,17 +40,14 @@
 
   function Plugin(element, options) {
     this.element = element;
-    // User can select a backend by its name
-    var backend;
+    this.settings = $.extend(true, {}, $.fn.Select2RocksBackends['default']);
 
+    // User can select a backend by its name
     if ('backend' in options) {
-      // Extract 'backend' from options
-      backend = options.backend;
+      $.extend(true, this.settings, $.fn.Select2RocksBackends[options.backend]);
       delete options.backend;
-    } else {
-      backend = 'default';
     }
-    this.settings = $.extend(true, {}, $.fn.Select2RocksBackends[backend], options);
+    $.extend(true, this.settings, options);
     this.settings.ajax.url = this.settings.url;
     if ('queryKey' in this.settings) {
       var queryKey = this.settings.queryKey;
