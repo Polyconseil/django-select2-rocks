@@ -1,0 +1,8 @@
+django-select2-rocks 0.3 (2015-06-09)
+=====================================
+
+This release handles muli-value selected boxes.
+Thanks to Loïs Burg
+
+This new version breaks compatibility with the previous version because the
+JS code of initSelection function has changed to handle new key value.
