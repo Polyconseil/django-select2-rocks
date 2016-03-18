@@ -6,7 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 import select2rocks
 
 from testproj.testapp.models import Beach, SelectedBeach
-from testproj.testapp.fields import MultipleBeachesChoiceField
 
 
 class SelectedBeachForm(forms.ModelForm):
@@ -54,7 +53,7 @@ class SelectedBeachForm(forms.ModelForm):
                              'backend': 'restframework'}))
 
     # Multi select REST framework
-    rest_framework_beach_multi = MultipleBeachesChoiceField(
+    rest_framework_beach_multi = select2rocks.Select2ModelMultipleChoiceField(
         queryset=Beach.objects.all(),
         required=False,
         widget=select2rocks.AjaxSelect2Widget(
