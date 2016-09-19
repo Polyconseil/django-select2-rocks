@@ -47,4 +47,4 @@ class Select2ModelMultipleChoiceField(forms.ModelMultipleChoiceField):
         return super(Select2ModelMultipleChoiceField, self).to_python(values.split(','))
 
     def clean(self, value):
-        return super(Select2ModelMultipleChoiceField, self).clean(value.split(','))
+        return super(Select2ModelMultipleChoiceField, self).clean(value.split(',') if value else None)
