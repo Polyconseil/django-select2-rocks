@@ -3,7 +3,7 @@
 import os
 from setuptools import setup
 
-__version__ = '0.3'
+__version__ = '0.4'
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
