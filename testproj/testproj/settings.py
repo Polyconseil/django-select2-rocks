@@ -22,7 +22,15 @@ SECRET_KEY = 'fa!1xh(+hn7=vlp9!@n!xel1e67=hof)x4=uh9&(!jqwz2cwid'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'testproj/templates')
+        ],
+        'APP_DIRS': True,
+    },
+]
 
 ALLOWED_HOSTS = []
 
@@ -53,11 +61,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'testproj.urls'
 
 WSGI_APPLICATION = 'testproj.wsgi.application'
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'testproj/templates'),
-)
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
