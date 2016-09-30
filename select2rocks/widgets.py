@@ -1,5 +1,6 @@
 import json
 
+import django
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
@@ -36,6 +37,11 @@ class Select2TextInput(forms.TextInput):
 
     def render(self, name, value, attrs=None, **kwargs):
         context = self.get_context(name, value, attrs=attrs or {}, **kwargs)
+
+        if django.VERSION >= (1, 10):
+            return loader.render_to_string(
+                self.template_name, context=context)
+
         return loader.render_to_string(
             self.template_name,
             dictionary=context,
