@@ -12,6 +12,14 @@ class SelectedBeachForm(forms.ModelForm):
 
     class Meta:
         model = SelectedBeach
+        fields = [
+            'json_beach',
+            'tastypie_beach_contains',
+            'tastypie_beach_starts',
+            'rest_framework_beach',
+            'rest_framework_beach_multi',
+            'required_boolean',
+        ]
 
     # Default JS backend
     json_beach = select2rocks.Select2ModelChoiceField(
