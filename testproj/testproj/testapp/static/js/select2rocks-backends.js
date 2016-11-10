@@ -32,7 +32,7 @@
         ajax: {
           dataType: 'json',
           data: function (term, page) {
-            return {name__icontains: term};
+            return {search: term};
           },
           results: function (data, page) {
             // No .objects as in tastypie backend

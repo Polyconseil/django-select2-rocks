@@ -49,7 +49,7 @@ class SelectedBeachForm(forms.ModelForm):
         queryset=Beach.objects.all(),
         required=False,
         widget=select2rocks.AjaxSelect2Widget(
-            url_name='beach-list',
+            url_name='rest_beach_list',
             select2_options={'placeholder': _("Select a beach"),
                              'backend': 'restframework'}))
 
@@ -58,7 +58,7 @@ class SelectedBeachForm(forms.ModelForm):
         queryset=Beach.objects.all(),
         required=False,
         widget=select2rocks.AjaxSelect2Widget(
-            url_name='beach-list',
+            url_name='rest_beach_list',
             select2_options={'placeholder': _("Select beaches"),
                              'backend': 'restframework'}))
 

@@ -7,8 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from rest_framework import viewsets, serializers, filters
-
+from rest_framework import generics, serializers, filters
 from testproj.testapp.models import Beach, SelectedBeach
 from testproj.testapp import forms
 
@@ -50,9 +49,8 @@ class BeachSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
-class BeachViewSet(viewsets.ReadOnlyModelViewSet):
+class BeachList(generics.ListAPIView):
     serializer_class = BeachSerializer
-    queryset = Beach.objects.all()
-    filter_backends = (filters.SearchFilter, filters.OrderingFilter)
-    search_fields = ('^name',)
-    ordering = 'name'
+    queryset = Beach.objects.order_by('name')
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name',)
