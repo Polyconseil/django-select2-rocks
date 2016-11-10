@@ -11,6 +11,7 @@ from testproj.testapp.models import Beach, SelectedBeach
 class SelectedBeachForm(forms.ModelForm):
 
     class Meta:
+        exclude = []
         model = SelectedBeach
 
     # Default JS backend
