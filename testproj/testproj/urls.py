@@ -6,8 +6,6 @@ from testproj.testapp.api import BeachResource
 
 from testproj.testapp.views import BeachList, index, json_beaches
 
-admin.autodiscover()
-
 # Tastypie
 tastypie_api_v1 = tastypie_api.Api(api_name='v1')
 tastypie_api_v1.register(BeachResource())
