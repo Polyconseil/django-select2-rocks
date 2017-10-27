@@ -36,7 +36,7 @@ class Select2TextInput(forms.TextInput):
         return context
 
     def render(self, name, value, attrs=None, **kwargs):
-        context = self.get_context(name, value, attrs=attrs or {}, **kwargs)
+        context = self.get_context(name, value, attrs=attrs or {})
 
         if django.VERSION >= (1, 10):
             return loader.render_to_string(
