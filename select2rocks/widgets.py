@@ -25,7 +25,10 @@ class Select2TextInput(forms.TextInput):
             # Only add the value if it is non-empty
             context['value'] = self._format_value(value)
 
-        context['attrs'] = self.build_attrs(attrs)
+        if django.VERSION >= (1, 11):
+            context['attrs'] = self.build_attrs(self.attrs, attrs)
+        else:
+            context['attrs'] = self.build_attrs(attrs)
 
         for key, attr in context['attrs'].items():
             if attr == 1:
