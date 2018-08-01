@@ -59,6 +59,14 @@ Django REST framework view.
            widget=select2rocks.AjaxSelect2Widget(url_name='json_beaches'))
 
 
+Subtleties
+----------
+
+Beware, the internal representation of the fields uses commas (``,``) to separate items. Thus you **cannot** use commas
+in your labels. Otherwise we'll interpret it as a separator and try to work with the text on both sides of the comma,
+which will most likely break.
+
+
 Get the Code
 ------------
 
