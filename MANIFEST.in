@@ -1,4 +1,7 @@
 include LICENSE
 include README.rst
+include NEWS
 recursive-include select2rocks/static *
 recursive-include select2rocks/templates *
+exclude testproj
+recursive-exclude testproj *
