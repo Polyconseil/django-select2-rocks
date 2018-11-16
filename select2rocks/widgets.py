@@ -23,7 +23,7 @@ class Select2TextInput(forms.TextInput):
 
         if value is not None:
             # Only add the value if it is non-empty
-            context['value'] = self._format_value(value)
+            context['value'] = self.format_value(value)
 
         if django.VERSION >= (1, 11):
             context['attrs'] = self.build_attrs(self.attrs, attrs)
