@@ -1,6 +1,6 @@
 from django import forms
 
-from select2rocks.widgets import AjaxSelect2Widget
+from select2rocks.widgets import AjaxSelect2Widget, Select2TextInput
 
 
 def label_from_instance_with_pk(obj, val):
@@ -11,6 +11,31 @@ def label_from_instance_with_pk(obj, val):
     with the correct label (labels are shown, pks are submitted)."""
     return u"{pk}:{val}".format(pk=obj.pk, val=val)
 
+
+class Select2ChoiceField(forms.ChoiceField):
+    widget = AjaxSelect2Widget
+
+    def __init__(self, choices, widget, label_from_instance=None, *args, **kwargs):
+        kwargs['choices'] = self.choices = choices
+        kwargs['widget'] = widget
+        super(Select2ChoiceField, self).__init__(*args, **kwargs)
+        self._label_from_instance = label_from_instance or super(Select2ChoiceField, self).label_from_instance
+        self.widget.field = self
+
+    def label_from_instance(self, obj):
+        return self._label_from_instance(obj)
+
+    def to_python(self, value):
+        ret = ''
+        for obj in self.choices:
+            if obj[0] == value:
+                return obj
+        return ret
+
+    def clean(self, value):
+        self.validate(value)
+        self.run_validators(value)
+        return value[0] if isinstance(value, tuple) else value
 
 class Select2ModelChoiceField(forms.ModelChoiceField):
     widget = AjaxSelect2Widget
