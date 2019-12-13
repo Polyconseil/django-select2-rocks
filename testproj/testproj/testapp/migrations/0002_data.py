@@ -33,9 +33,7 @@ def add_beaches(apps, schema_editor):
     SelectedBeach = apps.get_model("testapp", "SelectedBeach")
     SelectedBeach.objects.create(
         json_beach=Beach.objects.get(name=u"Plage de M. Hulot"),
-        tastypie_beach_contains=Beach.objects.get(name=u"Les Jaunais"),
         rest_framework_beach=Beach.objects.get(name=u"Plage de la Petite Vallée"),
-        tastypie_beach_starts=Beach.objects.get(name=u"Pointe de Chemoulin")
     )
 
 
