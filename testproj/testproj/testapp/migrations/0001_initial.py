@@ -21,10 +21,8 @@ class Migration(migrations.Migration):
             name='SelectedBeach',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('json_beach', models.ForeignKey(related_name='json', blank=True, to='testapp.Beach', null=True)),
-                ('rest_framework_beach', models.ForeignKey(related_name='rest', blank=True, to='testapp.Beach', null=True)),
-                ('tastypie_beach_contains', models.ForeignKey(related_name='tp_contains', blank=True, to='testapp.Beach', null=True)),
-                ('tastypie_beach_starts', models.ForeignKey(related_name='tp_starts', blank=True, to='testapp.Beach', null=True)),
+                ('json_beach', models.ForeignKey(related_name='json', blank=True, to='testapp.Beach', null=True, on_delete=models.CASCADE)),
+                ('rest_framework_beach', models.ForeignKey(related_name='rest', blank=True, to='testapp.Beach', null=True, on_delete=models.CASCADE)),
             ],
         ),
     ]

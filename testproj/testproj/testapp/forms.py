@@ -15,8 +15,6 @@ class SelectedBeachForm(forms.ModelForm):
         model = SelectedBeach
         fields = [
             'json_beach',
-            'tastypie_beach_contains',
-            'tastypie_beach_starts',
             'rest_framework_beach',
             'rest_framework_beach_multi',
             'required_boolean',
@@ -33,24 +31,6 @@ class SelectedBeachForm(forms.ModelForm):
                     'quietMillis': 50
                 }
             }))
-
-    # Tastypie JS backend
-    tastypie_beach_contains = select2rocks.Select2ModelChoiceField(
-        queryset=Beach.objects.all(),
-        required=False,
-        widget=select2rocks.AjaxSelect2Widget(
-            url_name='api_dispatch_list',
-            url_kwargs={'resource_name': 'beach', 'api_name': 'v1'},
-            select2_options={'backend': 'tastypie'}))
-
-    # Tastypie JS backend but overrides queryKey
-    tastypie_beach_starts = select2rocks.Select2ModelChoiceField(
-        queryset=Beach.objects.all(),
-        required=False,
-        widget=select2rocks.AjaxSelect2Widget(
-            url_name='api_dispatch_list',
-            url_kwargs={'resource_name': 'beach', 'api_name': 'v1'},
-            select2_options={'backend': 'tastypie', 'queryKey': 'name__istartswith'}))
 
     # REST Framework backend
     rest_framework_beach = select2rocks.Select2ModelChoiceField(

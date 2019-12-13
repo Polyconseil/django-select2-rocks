@@ -46,7 +46,7 @@ for an example).
 Example
 -------
 
-The testproj project contains examples with a simple JSON view, a Tastypie and a
+The testproj project contains examples with a simple JSON view and a
 Django REST framework view.
 
 .. code-block:: python
